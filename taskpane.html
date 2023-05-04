@@ -1,0 +1,41 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+
+<body>
+    <p>This add-in will align.</p>
+    <button onclick="align()">Align obj</button>
+
+</body>
+
+<script>
+    Office.onReady((info) => {
+        // Check that we loaded into PowerPoint
+        if (info.host === Office.HostType.PowerPoint) {
+            document.getElementById("align").onclick = align;            
+        }
+        
+    });
+
+    async function align() {
+
+        // Set coercion type to text since 
+        const optiontext = { coercionType: Office.CoercionType.Text };
+        //const optionimage = { coercionType: Office.CoercionType.Image};
+
+        // clear current selection
+        await Office.context.document.setSelectedDataAsync(" ", optiontext);
+
+        // Set text in selection to 'Hello world!'
+        await Office.context.document.setSelectedDataAsync("Hello world!", optiontext);
+    }
+   
+
+</script>
+
+</html>
