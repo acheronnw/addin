@@ -17,6 +17,7 @@
     Office.onReady((info) => {
         // Check that we loaded into PowerPoint
         if (info.host === Office.HostType.PowerPoint) {
+            alert("hey");
             document.getElementById("align").onclick = align;            
         }
         
@@ -26,7 +27,6 @@
 
         // Set coercion type to text since 
         const optiontext = { coercionType: Office.CoercionType.Selection };
-        alert("hey");
         //const optionimage = { coercionType: Office.CoercionType.Image};
 
         // clear current selection
